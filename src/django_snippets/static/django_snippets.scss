@@ -1,0 +1,16 @@
+.sTitle, .sDescription {
+  border: solid 1px var(--body-fg);
+  max-width: 600px;
+  padding: .4rem;
+  //background: lighten(var(--body-bg), 20);
+}
+
+.sTitle {
+  height: 1.6rem;
+  font-size: 1.2rem;
+}
+
+.sDescription {
+  height: 4rem;
+  font-size: 0.9rem;
+}
