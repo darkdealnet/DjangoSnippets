@@ -25,6 +25,9 @@ function init_snippet($) {
     let field_name_description = snippet.data().description
     let field_name_title = snippet.data().title
 
+    console.log($.parseHTML('&lt;h1&gt;Заголовок...&lt;/h1&gt;&lt;p&gt;Параграф...&lt;/p&gt;').find('h1'))
+    // console.log(snippet.data().textFields)
+
     let title_listen = $(`#id_${field_name_title}`)
     let title = snippet.find('.sTitle')
     let titleCount = snippet.find('.sTitleCount')
@@ -60,6 +63,6 @@ function Slice(val) {
 }
 
 function title_() {
-    
+
 }
 

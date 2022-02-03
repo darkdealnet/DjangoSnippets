@@ -12,6 +12,9 @@ class SnippetsAdmin(admin.ModelAdmin):
             'classes': ('wide', 'google_snippet'),
             'fields': ('probability', 'title', 'description',),
         }),
+        ('Content page', {
+            'fields': ('text_1',)
+        })
     )
 
     readonly_fields = (
@@ -25,7 +28,10 @@ class SnippetsAdmin(admin.ModelAdmin):
         return obj.title
 
     def Google(self, obj):
-        return render_to_string('google.html')
+        context = {
+            'text_fields': 'text1, text2',
+        }
+        return render_to_string('google.html', context)
 
     class Media:
         css = {
