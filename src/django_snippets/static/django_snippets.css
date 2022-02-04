@@ -1,12 +1,17 @@
 .sTitle, .sDescription {
   border: solid 1px var(--body-fg);
-  max-width: 600px;
+  width: 100%;
+  max-width: 450px;
   padding: 0.4rem;
 }
 
 .sTitle {
-  height: 1.6rem;
-  font-size: 1.2rem;
+  height: 1.3rem;
+  font-size: 1rem;
+  background: greenyellow;
+  border: solid 1px green;
+  box-shadow: 0 0 5px 4px #dcffaa inset;
+  margin-bottom: 0.5rem;
 }
 
 .sDescription {

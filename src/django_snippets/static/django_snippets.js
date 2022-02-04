@@ -33,22 +33,18 @@ function init_snippet($) {
     let title = snippet.find('.sTitle')
     let titleCount = snippet.find('.sTitleCount')
     title.text(Slice(title_listen.val()))
-    titleCount.text(title_listen.val().length)
 
     let description_listen = $(`#id_${field_name_description}`)
     let description = snippet.find('.sDescription')
     let descriptionCount = snippet.find('.sDescriptionCount')
     description.text(description_listen.val())
-    descriptionCount.text(description_listen.val().length)
 
     title_listen.bind('input', (event) => {
         title.text(Slice(event.target.value))
-        titleCount.text(event.target.value.length)
     })
 
     description_listen.bind('input', (event) => {
         description.text(event.target.value)
-        descriptionCount.text(event.target.value.length)
     })
 }
 
