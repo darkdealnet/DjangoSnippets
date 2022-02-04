@@ -25,8 +25,9 @@ function init_snippet($) {
     let field_name_description = snippet.data().description
     let field_name_title = snippet.data().title
 
-    console.log($.parseHTML('&lt;h1&gt;Заголовок...&lt;/h1&gt;&lt;p&gt;Параграф...&lt;/p&gt;').find('h1'))
-    // console.log(snippet.data().textFields)
+    let text_1 = $('#id_text_1').val()
+    console.log($('<div>').append(text_1).find('h1').length)
+    console.log($('<div>').append(text_1).find('h1').text())
 
     let title_listen = $(`#id_${field_name_title}`)
     let title = snippet.find('.sTitle')
@@ -34,13 +35,11 @@ function init_snippet($) {
     title.text(Slice(title_listen.val()))
     titleCount.text(title_listen.val().length)
 
-
     let description_listen = $(`#id_${field_name_description}`)
     let description = snippet.find('.sDescription')
     let descriptionCount = snippet.find('.sDescriptionCount')
     description.text(description_listen.val())
     descriptionCount.text(description_listen.val().length)
-
 
     title_listen.bind('input', (event) => {
         title.text(Slice(event.target.value))
