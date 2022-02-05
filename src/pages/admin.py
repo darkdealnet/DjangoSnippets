@@ -41,7 +41,7 @@ class PagesAdmin(SnippetsAdmin):
         return render_to_string('google.html', context)
 
     @admin.display
-    def colored_name(self):
+    def colored_name(self, obj):
         return format_html(
             '<span style="color: #{};">123</span>',
             '871f1f',
