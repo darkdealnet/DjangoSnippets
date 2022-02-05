@@ -21,30 +21,49 @@ function f() {
 }
 
 function init_snippet($) {
+
+
     let snippet = $('#DjangoSnippet')
-    let field_name_description = snippet.data().description
-    let field_name_title = snippet.data().title
+    let snippet_title = snippet.find('.sTitle')
+    let title_listen = $(`#id_${snippet.data().title}`)
+    let title = $('#id_title')
 
-    let text_1 = $('#id_text_1').val()
-    console.log($('<div>').append(text_1).find('h1').length)
-    console.log($('<div>').append(text_1).find('h1').text())
-
-    let title_listen = $(`#id_${field_name_title}`)
-    let title = snippet.find('.sTitle')
-    let titleCount = snippet.find('.sTitleCount')
-    title.text(Slice(title_listen.val()))
-
-    let description_listen = $(`#id_${field_name_description}`)
     let description = snippet.find('.sDescription')
-    let descriptionCount = snippet.find('.sDescriptionCount')
-    description.text(description_listen.val())
+    let description_listen = $(`#id_${snippet.data().description}`)
+    let header_listen = $('#id_header')
+
+    let init_state = {
+        titleIsBlank: title.val().length === 0
+    }
+
+    // let text_1 = $('#id_text_1').val()
+    // console.log($('<div>').append(text_1).find('h1').length)
+    // console.log($('<div>').append(text_1).find('h1').text())
+
+    // title.text(Slice(title_listen.val()))
+    // description.text(description_listen.val())
+
+    // слушатели
 
     title_listen.bind('input', (event) => {
-        title.text(Slice(event.target.value))
+        if (!init_state.titleIsBlank) {
+            snippet_title.text(Slice(event.target.value))
+        }
     })
 
-    description_listen.bind('input', (event) => {
-        description.text(event.target.value)
+    // description_listen.bind('input', (event) => {
+    //     description.text(event.target.value)
+    // })
+    //
+
+    header_listen.bind('input', (event) => {
+        // if (!init_state.titleIsBlank) {
+        // }
+        snippet_title.text(event.target.value)
+        if (init_state.titleIsBlank) {
+            title.val(event.target.value)
+        }
+
     })
 }
 
@@ -55,9 +74,5 @@ function Slice(val) {
     } else {
         return val
     }
-}
-
-function title_() {
-
 }
 
