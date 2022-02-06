@@ -3,6 +3,9 @@ from django.utils.html import escape
 
 
 class SeoModel(models.Model):
+    class Meta:
+        abstract = True
+
     title = models.CharField(
         max_length=80, help_text='max 80 characters',
         blank=True,
