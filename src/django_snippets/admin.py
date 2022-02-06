@@ -1,7 +1,4 @@
 from django.contrib import admin
-from django.template.loader import render_to_string
-from django.utils.safestring import mark_safe
-
 
 class SnippetsAdmin(admin.ModelAdmin):
     class Media:

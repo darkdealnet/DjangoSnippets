@@ -1,1 +1,13 @@
-<meta name="robots" content="noindex" />
+{% spaceless %}
+    {% if seo_model.index %}
+        <meta name="robots" content="noindex"/>
+    {% endif %}
+
+    {% if seo_model.keywords %}
+        <meta name="keywords" content="{{ seo_model.keywords }}"/>
+    {% endif %}
+
+    {% if seo_model.description %}
+        <meta name="description" content="{{ seo_model.description }}"/>
+    {% endif %}
+{% endspaceless %}
