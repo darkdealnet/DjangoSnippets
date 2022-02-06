@@ -53,6 +53,6 @@ setuptools.setup(
         'Django==4.0.1,',
         'django-tinymce==3.4.0',
         'sqlparse==0.4.2',
-        'tzdata==2021.5',
+        'tzdata==2021.5'
     ],
 )
