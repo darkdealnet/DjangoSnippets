@@ -1,3 +1,4 @@
+include src/django_seo_module/templates/*.html
 include src/django_seo_module/static/*.js
 include src/django_seo_module/static/*.css
 include src/django_seo_module/static/*.css.map
