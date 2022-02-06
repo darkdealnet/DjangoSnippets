@@ -3,12 +3,12 @@ from django.template.loader import render_to_string
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
-from django_seo_module.admin import SnippetsAdmin
+from django_seo_module.admin import DjangoSeoAdmin
 from pages.model import Pages
 
 
 @admin.register(Pages)
-class PagesAdmin(SnippetsAdmin):
+class PagesAdmin(DjangoSeoAdmin):
     # print(super().list_display)
     list_display = ('title', 'colored_name',)
     prepopulated_fields = {'slug': ('header',)}
