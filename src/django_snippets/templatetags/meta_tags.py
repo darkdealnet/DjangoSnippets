@@ -1,4 +1,5 @@
 from django import template
+from django.utils.safestring import SafeString
 
 # from django_snippets.models import SnippetModel
 
@@ -11,3 +12,4 @@ def meta():
     return {
         # 'sliders': sliders,
     }
+
