@@ -4,11 +4,8 @@ const maxLenghtDescription = 160
 
 function f() {
     (($) => {
-
         init_snippet($)
-
         $(document).on('formset:added', (event, $row, formsetName) => {
-            console.log(11233333333333)
             if (formsetName === 'author_set') {
                 // Do something
             }
@@ -20,55 +17,42 @@ function f() {
     })(django.jQuery);
 }
 
+
 function init_snippet($) {
     let snippet = $('#DjangoSnippet')
     let snippet_title = snippet.find('.sTitle')
-    let title_listen = $(`#id_${snippet.data().title}`)
     let title = $('#id_title')
+    let header = $('#id_header')
+    let titleIsChange = false
+    let titleIsBlank = title.val().length === 0
 
-    let description = snippet.find('.sDescription')
-    let description_listen = $(`#id_${snippet.data().description}`)
-    let header_listen = $('#id_header')
 
-    let state = {
-        titleIsBlank: title.val().length === 0,
-        titleIsChange: false
+    if (title.val().length !== 0) {
+        snippet_title.text(Slice(title.val()))
     }
 
-    function init_title() {
-        if (title.val().length !== 0) {
-            snippet_title.text(Slice(title.val()))
+    title.bind('input', (event) => {
+        if (event.type) {
+            titleIsChange = true
+            snippet_title.text(Slice(event.target.value))
+            return
         }
-    }
-
-    init_title()
-
-    // let text_1 = $('#id_text_1').val()
-    // console.log($('<div>').append(text_1).find('h1').length)
-    // console.log($('<div>').append(text_1).find('h1').text())
-
-    // title.text(Slice(title_listen.val()))
-    // description.text(description_listen.val())
-
-    // слушатели
-
-    title_listen.bind('input', (event) => {
-        if (!state.titleIsBlank) {
+        if (!titleIsBlank) {
             snippet_title.text(Slice(event.target.value))
         }
     })
 
-    // description_listen.bind('input', (event) => {
-    //     description.text(event.target.value)
-    // })
-    //
-
-    header_listen.bind('input', (event) => {
-        if (state.titleIsBlank) {
+    header.bind('input', (event) => {
+        if (titleIsBlank) {
             snippet_title.text(event.target.value)
         }
-        if (state.titleIsBlank) {
+        if (titleIsBlank && !titleIsChange) {
             title.val(event.target.value)
+        }
+
+        if (event.target.value.length == 0) {
+            titleIsBlank = true
+            titleIsChange = false
         }
 
     })
@@ -83,3 +67,9 @@ function Slice(val) {
     }
 }
 
+
+// let text_1 = $('#id_text_1').val()
+// console.log($('<div>').append(text_1).find('h1').length)
+// console.log($('<div>').append(text_1).find('h1').text())
+// title.text(Slice(title_listen.val()))
+// description.text(description_listen.val())

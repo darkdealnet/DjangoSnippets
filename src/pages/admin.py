@@ -9,6 +9,7 @@ from pages.model import Pages
 
 @admin.register(Pages)
 class PagesAdmin(SnippetsAdmin):
+    # print(super().list_display)
     list_display = ('title', 'colored_name',)
     prepopulated_fields = {'slug': ('header',)}
     fieldsets = (
