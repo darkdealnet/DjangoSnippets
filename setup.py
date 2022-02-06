@@ -54,5 +54,9 @@ setuptools.setup(
         'django-tinymce==3.4.0',
         'sqlparse==0.4.2',
         'tzdata==2021.5'
-    ]
+    ],
+    package_data={
+        'static': ['static/*.js', 'static/*.css'],
+
+    },
 )
