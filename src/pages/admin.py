@@ -3,7 +3,7 @@ from django.template.loader import render_to_string
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
-from django_snippets.admin import SnippetsAdmin
+from django_seo_module.admin import SnippetsAdmin
 from pages.model import Pages
 
 

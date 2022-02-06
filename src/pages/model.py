@@ -1,11 +1,11 @@
 from django.utils.html import format_html
-from django_snippets.models import SnippetModel, models
+from django_seo_module.models import SeoModel, models
 from tinymce.models import HTMLField
 
 from django.contrib import admin
 
 
-class Pages(SnippetModel):
+class Pages(SeoModel):
     class Meta:
         verbose_name = 'Page'
         verbose_name_plural = 'Pages'

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tinymce',
-    'django_snippets',
+    'django_seo_module',
     'pages'
 ]
 

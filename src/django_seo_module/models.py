@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.html import escape
 
 
-class SnippetModel(models.Model):
+class SeoModel(models.Model):
     title = models.CharField(
         max_length=80, help_text='max 80 characters',
         blank=True

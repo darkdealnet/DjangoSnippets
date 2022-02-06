@@ -21,15 +21,17 @@ function f() {
 function init_snippet($) {
     let snippet = $('#DjangoSnippet')
     let snippet_title = snippet.find('.sTitle')
+    let snippet_description = snippet.find('.sDescription')
     let title = $('#id_title')
+    let description = $('#id_description')
     let header = $('#id_header')
     let titleIsChange = false
     let titleIsBlank = title.val().length === 0
 
-
     if (title.val().length !== 0) {
         snippet_title.text(Slice(title.val()))
     }
+    snippet_description.text(description.val())
 
     title.bind('input', (event) => {
         if (event.type) {
@@ -42,6 +44,10 @@ function init_snippet($) {
         }
     })
 
+    description.bind('input', (event) => {
+        snippet_description.text(event.target.value)
+    })
+
     header.bind('input', (event) => {
         if (titleIsBlank) {
             snippet_title.text(event.target.value)
@@ -50,7 +56,7 @@ function init_snippet($) {
             title.val(event.target.value)
         }
 
-        if (event.target.value.length == 0) {
+        if (event.target.value.length === 0) {
             titleIsBlank = true
             titleIsChange = false
         }

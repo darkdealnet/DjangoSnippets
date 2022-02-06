@@ -1,7 +1,7 @@
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
 
-from django_snippets.models import SnippetModel
+from django_seo_module.models import SeoModel
 
 
 class PageView(TemplateView):
@@ -10,7 +10,7 @@ class PageView(TemplateView):
     def get_context_data(self, **kwargs):
         # Pages.objects.get(id=1)
         context = super().get_context_data(**kwargs)
-        context['seo_model'] = SnippetModel.objects.get(id=kwargs['page_id'])
+        context['seo_model'] = SeoModel.objects.get(id=kwargs['page_id'])
         # context['page'] = Pages.objects.get(id=1)
         return context
 #
