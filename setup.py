@@ -50,7 +50,7 @@ setuptools.setup(
     python_requires=">=3.10",
     install_requires=[
         'asgiref==3.5.0',
-        'Django==4.0.1,',
+        'Django==4.0.1',
         'django-tinymce==3.4.0',
         'sqlparse==0.4.2',
         'tzdata==2021.5'
