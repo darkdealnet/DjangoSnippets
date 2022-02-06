@@ -1,6 +1,5 @@
 include src/django_seo_module/static/*.js
 include src/django_seo_module/static/*.css
 include src/django_seo_module/static/*.css.map
-include src/django_seo_module/static/admin/*.js
 include src/django_seo_module/static/admin/*.css
 include src/django_seo_module/static/admin/*.css.map
