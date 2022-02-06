@@ -55,8 +55,8 @@ setuptools.setup(
         'sqlparse==0.4.2',
         'tzdata==2021.5'
     ],
-    package_data={
-        'static': ['static/*.js', 'static/*.css'],
-
-    },
+    include_package_data=True
+    # package_data={
+    #     'static': ['src/django_seo_module/static/*.js'],
+    # },
 )
