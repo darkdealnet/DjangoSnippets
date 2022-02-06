@@ -47,7 +47,7 @@ setuptools.setup(
         exclude=['django_seo_module.tests']
     ),
     package_dir={'': 'src'},
-    python_requires=">=3.10",
+    python_requires=">=3.6",
     install_requires=[
         'asgiref==3.5.0',
         'Django==4.0.1',
