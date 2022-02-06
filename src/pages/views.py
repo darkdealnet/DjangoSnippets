@@ -13,7 +13,7 @@ class PageView(TemplateView):
         context['seo_model'] = SeoModel.objects.get(id=kwargs['page_id'])
         # context['page'] = Pages.objects.get(id=1)
         return context
-#
-#
-# def contacts(request, service, id):
-#     return render(request, 'service_item.html', {})
+
+
+def main_view(request):
+    return render(request, 'main.html', {})
