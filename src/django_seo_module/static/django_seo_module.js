@@ -4,7 +4,11 @@ const maxLenghtDescription = 160
 
 function f() {
     (($) => {
-        init_snippet($)
+        if ($('body.change-form').length) {
+            init_snippet($)
+        } else if ($('body.change-list').length) {
+            console.log('change-list')
+        }
         $(document).on('formset:added', (event, $row, formsetName) => {
             if (formsetName === 'author_set') {
                 // Do something
@@ -27,6 +31,7 @@ function init_snippet($) {
     let header = $('#id_header')
     let titleIsChange = false
     let titleIsBlank = title.val().length === 0
+
 
     if (title.val().length !== 0) {
         snippet_title.text(Slice(title.val()))
