@@ -1,8 +1,8 @@
+from django.urls import reverse
 from django.utils.html import format_html
 from django_seo_module.models import SeoModel, models
 from tinymce.models import HTMLField
-
-from django.contrib import admin
+from bs4 import BeautifulSoup
 
 
 class Pages(SeoModel):
@@ -16,4 +16,19 @@ class Pages(SeoModel):
     )
     text_1 = HTMLField(blank=True)
 
+    def __str__(self):
+        return self.header
 
+
+class PagesTwo(SeoModel):
+    class Meta:
+        verbose_name = 'PageTwo'
+        verbose_name_plural = 'PagesTwo'
+
+    text_1 = HTMLField(blank=True)
+
+    def __str__(self):
+        return BeautifulSoup(self.text_1, features="html.parser").h1.text
+
+    def get_absolute_url(self):
+        return reverse('pageTwo', kwargs={'page_id': self.id})

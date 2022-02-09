@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
+{% load html_text_filtsers %}
 {% load meta_tags %}
 
 {% block meta %}{% meta seo_model.id %}{% endblock %}
-{% block content %}page is working{% endblock %}
+{% block content %}
+    {{ seo_model.text_1|first_tag:"h1"|safe }}
+    {{ seo_model.text_1|first_tag:"p"|safe }}
+{% endblock %}
 
 
