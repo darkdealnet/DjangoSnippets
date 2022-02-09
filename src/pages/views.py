@@ -3,7 +3,7 @@ from django.views.generic.base import TemplateView
 from django.shortcuts import render
 
 from django_seo_module.parser import parser
-from pages.model import Pages, PagesTwo
+from pages.models import Pages, PagesTwo
 
 
 class PageView(TemplateView):

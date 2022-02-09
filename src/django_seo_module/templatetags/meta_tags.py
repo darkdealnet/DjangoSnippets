@@ -1,6 +1,6 @@
 from django import template
 
-from pages.model import Pages
+from pages.models import Pages
 
 register = template.Library()
 

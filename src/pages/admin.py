@@ -5,7 +5,7 @@ from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
 from django_seo_module.admin import DjangoSeoAdmin
-from pages.model import Pages, PagesTwo
+from pages.models import Pages, PagesTwo
 
 
 @admin.register(Pages)
