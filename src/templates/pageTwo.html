@@ -1,16 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{#    {{ base_h1 }}#}
-{#    {{ base_p }}#}
-
-{#    {% autoescape on %}#}
-        {% for page in test %}
-            {% for tag in page %}
-                {{ tag }}
-            {% endfor %}
+    {% for page in content %}
+        {% for tag in page %}
+            {{ tag|safe }}
         {% endfor %}
-{#    {% endautoescape %}#}
+    {% endfor %}
 {% endblock %}
 
 

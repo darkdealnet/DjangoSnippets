@@ -87,6 +87,9 @@ class PagesAdmin(DjangoSeoAdmin):
 
     @admin.display
     def colored_name(self, obj):
-        return BeautifulSoup(obj.text_1, features="html.parser").h1.text
+        # h1 = BeautifulSoup(self.text_1, features="html.parser").h1
+        # return h1.text if h1 else f'{self.id=}'
+        return obj.__str__()
+
 
     readonly_fields = ('Google',)

@@ -28,11 +28,6 @@ def page_two(request, page_id):
     if error:
         return error
     context = {
-        'base_h1': mark_safe(parse_result[0][0].__str__()),
-        'base_p': mark_safe(parse_result[0][1].__str__()),
-        'text': 'hello',
-        'html': '<p>html text</p>',
-        'test': parse_result,
+        'content': parse_result,
     }
-    # print(context['test'])
     return render(request, 'pageTwo.html', context)
