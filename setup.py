@@ -1,4 +1,6 @@
 import pathlib
+
+import pkg_resources
 import setuptools
 import codecs
 import os.path
@@ -8,13 +10,19 @@ here = pathlib.Path(__file__).parent.resolve()
 with open('README.md', 'r', encoding='utf-8') as fh:
     long_description = fh.read()
 
-with open('requirements.txt', encoding='utf-8') as f:
-    required = f.read().splitlines()
+with codecs.open('requirements.txt', 'r', encoding='utf-16') as requirements_txt:
+    print(requirements_txt)
+    install_requires = [
+        str(requirement)
+        for requirement
+        in pkg_resources.parse_requirements(requirements_txt)
+    ]
+
 
 
 def read(rel_path):
-    here = os.path.abspath(os.path.dirname(__file__))
-    with codecs.open(os.path.join(here, rel_path), 'r') as fp:
+    path = os.path.abspath(os.path.dirname(__file__))
+    with codecs.open(os.path.join(path, rel_path), 'r') as fp:
         return fp.read()
 
 
@@ -51,14 +59,7 @@ setuptools.setup(
     ),
     package_dir={'': 'src'},
     python_requires=">=3.6",
-    install_requires=required,
-    # install_requires=[
-    #     'asgiref==3.5.0',
-    #     'Django>=3.0',
-    #     'django-tinymce==3.4.0',
-    #     'sqlparse==0.4.2',
-    #     'tzdata==2021.5'
-    # ],
+    install_requires=install_requires,
     include_package_data=True
     # package_data={
     #     'static': ['src/django_seo_module/static/*.js'],
