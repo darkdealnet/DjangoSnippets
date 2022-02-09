@@ -1,8 +1,10 @@
+from typing import Tuple, List, Any, Callable, Dict
+
 from bs4 import BeautifulSoup
-from django.utils.safestring import mark_safe
+from django.utils.safestring import mark_safe, SafeString
 
 
-def parser(wysiwyg):
+def parser(wysiwyg) -> tuple[None, str] | tuple[list[list[str]], None]:
     wysiwyg_splitting = wysiwyg.split('<p><!-- pagebreak --></p>')
 
     pages = []

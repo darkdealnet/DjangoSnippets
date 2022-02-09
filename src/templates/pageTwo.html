@@ -2,9 +2,12 @@
 
 {% block content %}
     {% for page in content %}
-        {% for tag in page %}
-            {{ tag|safe }}
-        {% endfor %}
+        {% if forloop.first %}
+
+        {% endif %}
+{#        {% for tag in page %}#}
+{#            {{ tag|safe }}#}
+{#        {% endfor %}#}
     {% endfor %}
 {% endblock %}
 
