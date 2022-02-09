@@ -19,7 +19,10 @@
 
 .form-row.field-Google {
   background: #2676c7;
-  color: white;
+  color: white !important;
+}
+.form-row.field-Google > label {
+  color: white !important;
 }
 
 /*# sourceMappingURL=django_seo_module.css.map */

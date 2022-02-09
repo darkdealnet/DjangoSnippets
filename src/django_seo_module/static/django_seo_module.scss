@@ -21,7 +21,10 @@
 
 .form-row.field-Google {
   background: #2676c7;
-  color: white;
+  color: white!important;
+  >label {
+    color: white!important;
+  }
 
 }
 

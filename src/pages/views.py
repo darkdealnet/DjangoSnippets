@@ -2,7 +2,7 @@ from django.utils.safestring import mark_safe
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
 
-from django_seo_module.parse import parser
+from django_seo_module.parser import parser
 from pages.model import Pages, PagesTwo
 
 
@@ -28,10 +28,11 @@ def page_two(request, page_id):
     if error:
         return error
     context = {
-        'base_h1': parse_result['base_h1'],
-        'base_p': parse_result['base_p'],
+        'base_h1': mark_safe(parse_result[0][0].__str__()),
+        'base_p': mark_safe(parse_result[0][1].__str__()),
         'text': 'hello',
         'html': '<p>html text</p>',
+        'test': parse_result,
     }
-
+    # print(context['test'])
     return render(request, 'pageTwo.html', context)
