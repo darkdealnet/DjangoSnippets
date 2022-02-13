@@ -37,7 +37,7 @@ class PagesAdmin(DjangoSeoAdmin):
 
     def Google(self, obj):
         context = {
-            'text_fields': 'text1, text2',
+            'text_field': 'text_1',
         }
         return render_to_string('google.html', context)
 
@@ -80,7 +80,7 @@ class PagesAdmin(DjangoSeoAdmin):
     def Google(self, obj):
         context = {
             'class': 'auto-snippet',
-            'text_fields': 'text1, text2',
+            'text_field': 'text_1',
         }
         return render_to_string('google.html', context)
 
