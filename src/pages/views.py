@@ -30,5 +30,4 @@ def page_two(request, page_id):
     context = {
         'content': parse_result,
     }
-    print(parse_result)
     return render(request, 'pageTwo.html', context)

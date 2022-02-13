@@ -11,7 +11,6 @@ with open('README.md', 'r', encoding='utf-8') as fh:
     long_description = fh.read()
 
 with codecs.open('requirements.txt', 'r', encoding='utf-16') as requirements_txt:
-    print(requirements_txt)
     install_requires = [
         str(requirement)
         for requirement

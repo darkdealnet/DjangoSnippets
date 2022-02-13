@@ -10,7 +10,6 @@ from pages.models import Pages, PagesTwo
 
 @admin.register(Pages)
 class PagesAdmin(DjangoSeoAdmin):
-    # print(super().list_display)
     list_display = ('title', 'colored_name',)
     prepopulated_fields = {'slug': ('header',)}
     fieldsets = (
@@ -54,7 +53,6 @@ class PagesAdmin(DjangoSeoAdmin):
 
 @admin.register(PagesTwo)
 class PagesAdmin(DjangoSeoAdmin):
-    # print(super().list_display)
     list_display = ('colored_name',)
     fieldsets = (
         ('Likely Snippet ', {
@@ -81,6 +79,7 @@ class PagesAdmin(DjangoSeoAdmin):
 
     def Google(self, obj):
         context = {
+            'class': 'auto-snippet',
             'text_fields': 'text1, text2',
         }
         return render_to_string('google.html', context)

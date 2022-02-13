@@ -17,6 +17,5 @@ def parser(wysiwyg) -> tuple[None, str] | tuple[list[list[str]], None]:
                 return None, 'first tag is not h1'
 
         pages.append([mark_safe(x.__str__()) for x in soup_found])
-        print(pages)
 
     return pages, None
