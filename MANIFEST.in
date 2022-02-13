@@ -4,3 +4,5 @@ include src/django_seo_module/static/*.css
 include src/django_seo_module/static/*.css.map
 include src/django_seo_module/static/admin/*.css
 include src/django_seo_module/static/admin/*.css.map
+include src/django_seo_module/static/snippet/*.js
+include src/django_seo_module/static/snippet/*.txt
