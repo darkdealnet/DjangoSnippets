@@ -58,9 +58,9 @@ TEMPLATES = [
     },
 ]
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'snippet',
-]
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'DjangoSeoReact',
+# ]
 
 WSGI_APPLICATION = 'django_app.wsgi.application'
 
