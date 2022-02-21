@@ -58,14 +58,16 @@ class PagesAdmin(DjangoSeoAdmin):
     list_display = ('colored_name',)
     fieldsets = (
         ('Likely Snippet ', {
-            'fields': ('google',)
+            'fields': ('Google',)
         }),
         ('Page Meta (For only SEO Master)', {
             'classes': ('collapse', 'google_snippet'),
             # 'classes': ('google_snippet',),
             'fields': (
-                ('title', 'auto_compile_title'),
-                ('description', 'auto_compile_description'),
+                'title',
+                'auto_compile_title',
+                'description',
+                'auto_compile_description',
                 'keywords',
                 'index'
             ),
@@ -75,7 +77,7 @@ class PagesAdmin(DjangoSeoAdmin):
         }),
     )
 
-    def google(self, obj):
+    def Google(self, obj):
         context = {
             'class': 'auto-snippet',
             'settings': json.dumps({
@@ -93,4 +95,4 @@ class PagesAdmin(DjangoSeoAdmin):
         # return h1.text if h1 else f'{self.id=}'
         return obj.__str__()
 
-    readonly_fields = ('google',)
+    readonly_fields = ('Google',)
