@@ -26,10 +26,14 @@ class PagesTwo(SeoModel):
         verbose_name_plural = 'PagesTwo'
 
     text_1 = HTMLField(blank=True)
+    slug = None
 
     def __str__(self):
         first = BeautifulSoup(self.text_1, features="html.parser").find()
-        return first.text if first.name == 'h1' else f'ERROR: first tag not "h1"'
+        if first:
+            return first.text if first.name == 'h1' else f'ERROR: first tag not "h1"'
+        else:
+            return 'content not found'
 
     def get_absolute_url(self):
         return reverse('pageTwo', kwargs={'page_id': self.id})

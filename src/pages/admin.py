@@ -1,3 +1,5 @@
+import json
+
 from bs4 import BeautifulSoup
 from django.contrib import admin
 from django.template.loader import render_to_string
@@ -56,15 +58,14 @@ class PagesAdmin(DjangoSeoAdmin):
     list_display = ('colored_name',)
     fieldsets = (
         ('Likely Snippet ', {
-            'fields': ('Google',)
+            'fields': ('google',)
         }),
         ('Page Meta (For only SEO Master)', {
             'classes': ('collapse', 'google_snippet'),
             # 'classes': ('google_snippet',),
             'fields': (
-                'title',
-                'slug',
-                'description',
+                ('title', 'auto_compile_title'),
+                ('description', 'auto_compile_description'),
                 'keywords',
                 'index'
             ),
@@ -74,13 +75,15 @@ class PagesAdmin(DjangoSeoAdmin):
         }),
     )
 
-    def custom_title(self):
-        return self.title
-
-    def Google(self, obj):
+    def google(self, obj):
         context = {
             'class': 'auto-snippet',
-            'text_field': 'text_1',
+            'settings': json.dumps({
+                'idTitle': 'id_title',
+                'idDescription': 'id_description',
+                'textField': 'id_text_1',
+                'slug': False,
+            })
         }
         return render_to_string('google.html', context)
 
@@ -90,5 +93,4 @@ class PagesAdmin(DjangoSeoAdmin):
         # return h1.text if h1 else f'{self.id=}'
         return obj.__str__()
 
-
-    readonly_fields = ('Google',)
+    readonly_fields = ('google',)

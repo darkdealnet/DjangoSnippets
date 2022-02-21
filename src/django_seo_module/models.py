@@ -10,10 +10,19 @@ class SeoModel(models.Model):
         max_length=80, help_text='max 80 characters',
         blank=True,
     )
+
+    auto_compile_title = models.BooleanField(
+        default=True
+    )
+
     description = models.TextField(
         max_length=160, help_text='max 160 characters',
         blank=True,
     )
+    auto_compile_description = models.BooleanField(
+        default=True
+    )
+
     keywords = models.TextField(
         blank=True
     )
