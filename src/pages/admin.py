@@ -7,7 +7,7 @@ from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
 from django_seo_module.admin import DjangoSeoAdmin
-from pages.models import Pages, PagesTwo
+from pages.models import Pages, PagesTwo, PagesSlug
 
 
 @admin.register(Pages)
@@ -54,7 +54,7 @@ class PagesAdmin(DjangoSeoAdmin):
 
 
 @admin.register(PagesTwo)
-class PagesAdmin(DjangoSeoAdmin):
+class PagesTwoAdmin(DjangoSeoAdmin):
     list_display = ('colored_name',)
     fieldsets = (
         ('Likely Snippet ', {
@@ -85,6 +85,51 @@ class PagesAdmin(DjangoSeoAdmin):
                 'idDescription': 'id_description',
                 'textField': 'id_text_1',
                 'slug': False,
+            })
+        }
+        return render_to_string('google.html', context)
+
+    @admin.display
+    def colored_name(self, obj):
+        # h1 = BeautifulSoup(self.text_1, features="html.parser").h1
+        # return h1.text if h1 else f'{self.id=}'
+        return obj.__str__()
+
+    readonly_fields = ('Google',)
+
+
+@admin.register(PagesSlug)
+class PagesSlugAdmin(DjangoSeoAdmin):
+    list_display = ('colored_name',)
+    fieldsets = (
+        ('Likely Snippet ', {
+            'fields': ('Google',)
+        }),
+        ('Page Meta (For only SEO Master)', {
+            'classes': ('collapse', 'google_snippet'),
+            # 'classes': ('google_snippet',),
+            'fields': (
+                'title',
+                'auto_compile_title',
+                'description',
+                'auto_compile_description',
+                'keywords',
+                'index'
+            ),
+        }),
+        ('Content page', {
+            'fields': ('slug', 'text_1',)
+        }),
+    )
+
+    def Google(self, obj):
+        context = {
+            'class': 'auto-snippet',
+            'settings': json.dumps({
+                'idTitle': 'id_title',
+                'idDescription': 'id_description',
+                'textField': 'id_text_1',
+                'slug': True,
             })
         }
         return render_to_string('google.html', context)
