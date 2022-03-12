@@ -7,7 +7,8 @@ from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
 from django_seo_module.admin import DjangoSeoAdmin
-from pages.models import Pages, PagesTwo, PagesSlug, PagesManyText
+from pages.models import Pages, PagesTwo, PagesSlug, PagesManyText, \
+    PageCKeditor
 
 
 @admin.register(Pages)
@@ -186,3 +187,48 @@ class PagesManyTextAdmin(DjangoSeoAdmin):
         return obj.__str__()
 
     readonly_fields = ('Google',)
+
+
+@admin.register(PageCKeditor)
+class PagesManyTextAdmin(DjangoSeoAdmin):
+    list_display = ('colored_name',)
+    fieldsets = (
+        ('Likely Snippet ', {
+            'fields': ('google',)
+        }),
+        ('Page Meta (For only SEO Master)', {
+            'classes': ('collapse', 'google_snippet'),
+            # 'classes': ('google_snippet',),
+            'fields': (
+                'title',
+                'auto_compile_title',
+                'description',
+                'auto_compile_description',
+                'keywords',
+                'index'
+            ),
+        }),
+        ('Content page', {
+            'fields': ('slug', 'content')
+        }),
+    )
+
+    def google(self, obj):
+        context = {
+            'class': 'auto-snippet',
+            'settings': json.dumps({
+                'idTitle': 'id_title',
+                'idDescription': 'id_description',
+                'textFields': ['id_content'],
+                'slug': True,
+            })
+        }
+        return render_to_string('google.html', context)
+
+    @admin.display
+    def colored_name(self, obj):
+        # h1 = BeautifulSoup(self.text_1, features="html.parser").h1
+        # return h1.text if h1 else f'{self.id=}'
+        return obj.__str__()
+
+    readonly_fields = ('google',)

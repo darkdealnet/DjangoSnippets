@@ -1,3 +1,4 @@
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
 from django.utils.html import format_html
 from django_seo_module.models import SeoModel, models
@@ -51,6 +52,20 @@ class PagesManyText(SeoModel):
 
     def __str__(self):
         first = BeautifulSoup(self.text_1, features="html.parser").find()
+        if first:
+            return first.text if first.name == 'h1' else f'ERROR: first tag not "h1"'
+        else:
+            return 'content not found'
+
+    def get_absolute_url(self):
+        return reverse('pages_many_text', kwargs={'page_id': self.id})
+
+
+class PageCKeditor(SeoModel):
+    content = RichTextUploadingField(blank=True)
+
+    def __str__(self):
+        first = BeautifulSoup(self.content, features="html.parser").find()
         if first:
             return first.text if first.name == 'h1' else f'ERROR: first tag not "h1"'
         else:
