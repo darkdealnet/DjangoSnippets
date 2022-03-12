@@ -1,8 +1,8 @@
-include src/DjangoSEOModule/templates/*.html
-include src/DjangoSEOModule/static/*.js
-include src/DjangoSEOModule/static/*.css
-include src/DjangoSEOModule/static/*.css.map
-include src/DjangoSEOModule/static/admin/*.css
-include src/DjangoSEOModule/static/admin/*.css.map
-include src/DjangoSEOModule/static/snippet/*.js
-include src/DjangoSEOModule/static/snippet/*.txt
+include src/django_seo_module/templates/*.html
+include src/django_seo_module/static/*.js
+include src/django_seo_module/static/*.css
+include src/django_seo_module/static/*.css.map
+include src/django_seo_module/static/admin/*.css
+include src/django_seo_module/static/admin/*.css.map
+include src/django_seo_module/static/snippet/*.js
+include src/django_seo_module/static/snippet/*.txt
