@@ -1,9 +1,10 @@
 from django import template
 from pydantic import BaseModel, PyObject
+from django.conf import settings
 
 
 class PageModel(BaseModel):
-    model: PyObject = 'pages.models.Pages'
+    model: PyObject = settings.PAGE_MODEL
 
 
 register = template.Library()
