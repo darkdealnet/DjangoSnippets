@@ -1,11 +1,14 @@
 from django import template
+from pydantic import BaseModel, PyObject
 
-from pages.models import Pages
+
+class PageModel(BaseModel):
+    model: PyObject = 'pages.models.Pages'
+
 
 register = template.Library()
 
 
 @register.inclusion_tag('meta_tags.html')
 def meta(_id):
-    return {'seo_model': Pages.objects.get(id=_id)}
-
+    return {'seo_model': PageModel().model.objects.get(id=_id)}
